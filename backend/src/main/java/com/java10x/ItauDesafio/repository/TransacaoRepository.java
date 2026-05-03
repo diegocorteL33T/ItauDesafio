@@ -12,18 +12,26 @@ public class TransacaoRepository {
 
     List<TransacaoRequest> listaDeTransacoes = new ArrayList<>();
 
+
     // Salvar os dados em uma lista
+
     public void salvarDados(TransacaoRequest transacaoRequest){
 
     listaDeTransacoes.add(transacaoRequest);
 
     }
+
+
     // Apagar a lista depois de 60 segundos
 
     public void limparDados(TransacaoRequest transacaoRequest){
 
-
     }
+
+    public List<TransacaoRequest> listar(){
+        return listaDeTransacoes;
+    }
+
 
     // Apagar todas as transacoes da lista
 
