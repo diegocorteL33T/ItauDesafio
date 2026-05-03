@@ -3,7 +3,6 @@ package com.java10x.ItauDesafio.repository;
 import com.java10x.ItauDesafio.model.TransacaoRequest;
 import org.springframework.stereotype.Repository;
 
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,17 +20,9 @@ public class TransacaoRepository {
 
     }
 
-
-    // Apagar a lista depois de 60 segundos
-
-    public void limparDados(TransacaoRequest transacaoRequest){
-
-    }
-
     public List<TransacaoRequest> listar(){
         return listaDeTransacoes;
     }
-
 
     // Apagar todas as transacoes da lista
 
