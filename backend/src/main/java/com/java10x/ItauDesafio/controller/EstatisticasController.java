@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
-@RequestMapping("/estatisticas")
+@RequestMapping("/estatistica")
 public class EstatisticasController {
 
     private final EstatisticasService service;
