@@ -46,7 +46,7 @@ public class EstatisticasService {
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
 
         BigDecimal avg = sum.divide(BigDecimal.valueOf(recentes.size()),
-                2, RoundingMode.HALF_UP);
+                4, RoundingMode.HALF_UP);
 
         BigDecimal max = recentes.stream()
                 .map(TransacaoRequest::valor)
