@@ -1,12 +1,15 @@
 package com.java10x.ItauDesafio.model;
 
 
+import java.math.BigDecimal;
+
 public record EstatisticaDTO(
         Long count,
-        double avg,
-        double max,
-        double min,
-        double sum
+        BigDecimal sum,
+        BigDecimal avg,
+        BigDecimal max,
+        BigDecimal min
+
         ) {
 
 }
