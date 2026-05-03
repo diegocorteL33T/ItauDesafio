@@ -2,7 +2,6 @@ package com.java10x.ItauDesafio.service;
 
 import com.java10x.ItauDesafio.model.TransacaoRequest;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.HttpClientErrorException;
 
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
