@@ -64,8 +64,8 @@ public class EstatisticasService {
                 count,
                 sum,
                 avg,
-                min,
-                max
+                max,
+                min
         );
 
 
