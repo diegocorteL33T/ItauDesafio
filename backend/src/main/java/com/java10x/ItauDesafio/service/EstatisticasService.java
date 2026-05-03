@@ -1,5 +1,6 @@
 package com.java10x.ItauDesafio.service;
 
+import com.java10x.ItauDesafio.config.EstatisticasProperties;
 import com.java10x.ItauDesafio.model.EstatisticaDTO;
 import com.java10x.ItauDesafio.model.TransacaoRequest;
 import com.java10x.ItauDesafio.repository.TransacaoRepository;
@@ -9,7 +10,6 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.OffsetDateTime;
-import java.util.DoubleSummaryStatistics;
 import java.util.List;
 
 @Service
@@ -17,17 +17,19 @@ public class EstatisticasService {
 
 
     private final TransacaoRepository repository;
+    private final EstatisticasProperties estatisticasProperties;
 
-    public EstatisticasService(TransacaoRepository repository) {
+    public EstatisticasService(TransacaoRepository repository, EstatisticasProperties estatisticasProperties) {
         this.repository = repository;
+        this.estatisticasProperties = estatisticasProperties;
     }
 
     public EstatisticaDTO calcularEstatisticas(){
 
-        OffsetDateTime agora = OffsetDateTime.now();
+        OffsetDateTime agora = OffsetDateTime.now().minusSeconds(estatisticasProperties.segundos());
 
         List<TransacaoRequest> recentes = repository.listar().stream()
-                .filter(t -> t.dataHora().isAfter(agora.minusSeconds(60)))
+                .filter(t -> t.dataHora().isAfter(agora) || t.dataHora().isEqual(agora))
                 .toList();
 
         if(recentes.isEmpty()) {
