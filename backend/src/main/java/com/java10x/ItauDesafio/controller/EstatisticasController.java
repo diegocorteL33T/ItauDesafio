@@ -2,6 +2,7 @@ package com.java10x.ItauDesafio.controller;
 
 
 import com.java10x.ItauDesafio.config.EstatisticasProperties;
+import com.java10x.ItauDesafio.docs.EstatisticasControllerDoc;
 import com.java10x.ItauDesafio.model.EstatisticaDTO;
 import com.java10x.ItauDesafio.service.EstatisticasService;
 import lombok.extern.slf4j.Slf4j;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 @RestController
 @RequestMapping("/estatistica")
-public class EstatisticasController {
+public class EstatisticasController implements EstatisticasControllerDoc {
 
     private final EstatisticasService service;
     private final EstatisticasProperties estatisticasProperties;

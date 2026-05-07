@@ -1,9 +1,13 @@
 package com.java10x.ItauDesafio.controller;
 
 
+import com.java10x.ItauDesafio.docs.TransacoesControllerDoc;
 import com.java10x.ItauDesafio.model.TransacaoRequest;
 import com.java10x.ItauDesafio.repository.TransacaoRepository;
 import com.java10x.ItauDesafio.service.TransacaoService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -13,7 +17,8 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 @RestController
 @RequestMapping("/transacao")
-public class TransacoesController {
+@Tag(name="Transacoes", description = "EndPoints responsaveis por criar e adicionar e limpar transacoes da lista")
+public class TransacoesController implements TransacoesControllerDoc {
 
     private final TransacaoService transacaoService;
     private final TransacaoRepository transacaoRepository;
@@ -44,6 +49,7 @@ public class TransacoesController {
     }*/
 
     @PostMapping
+
     public ResponseEntity<Void> adicionar(@RequestBody @Valid TransacaoRequest transacaoRequest) {
         transacaoService.validarTransacao(transacaoRequest);
         transacaoRepository.salvarDados(transacaoRequest);
@@ -52,6 +58,7 @@ public class TransacoesController {
     }
 
     @DeleteMapping
+
     public ResponseEntity<Void> deletar(){
         log.info("Deletando todas as transações");
         transacaoRepository.deletarDados();
